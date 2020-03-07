@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\Phone\PhoneRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\DienThoaiRequest;
@@ -15,6 +16,13 @@ use File, Redirect, DateTime;
 
 class DienThoaiController extends Controller
 {
+    public $phone;
+
+    public function __construct(PhoneRepositoryInterface $phoneRepository)
+    {
+        $this->phone = $phoneRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +30,7 @@ class DienThoaiController extends Controller
      */
     public function index()
     {   
-        $dienthoai = DienThoai::where('trang_thai',1)->get();
+        $dienthoai = $this->phone->findActivePhone();
         $nsx = "";
         return view('smartstore.mobile',compact('dienthoai','nsx'));
     }

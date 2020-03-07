@@ -163,7 +163,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Illuminate\Html\HtmlServiceProvider::class,
-        
+
 
         /*
          * Package Service Providers...
@@ -182,6 +182,8 @@ return [
         App\Providers\MacroServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
 
+        // Repositories
+        App\Providers\RepositoryServiceProvider::class
     ],
 
     /*
